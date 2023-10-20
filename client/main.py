@@ -27,7 +27,11 @@ def main(port):
             guess = input("Your next Guess: ")
             while len(guess) != 1 or not guess.isalpha():
                 guess = input("Please enter a single letter: ")
-            client.send(guess.encode())
+            #check server is still up
+            try:
+                client.send(guess.encode())
+            except:
+                break
 
     client.close()
 
