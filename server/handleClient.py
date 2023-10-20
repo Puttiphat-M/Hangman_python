@@ -8,7 +8,7 @@ chosen_word = random.choice(word_list)
 
 guessed_word = ["-" for _ in chosen_word]
 
-max_guesses = 10
+max_guesses = 1
 
 lock = threading.Lock()
 def handle_client(client_socket):
