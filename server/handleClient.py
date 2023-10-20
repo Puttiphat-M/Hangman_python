@@ -24,13 +24,11 @@ def play_game(client_socket):
                     max_guesses -= 1
 
             if ''.join(guessed_word) == chosen_word:
-                client_socket.send("You won\n".encode())
+                client_socket.send(f"You won\nthe word was {chosen_word} you have {max_guesses} Guess left\n".encode())
                 break
             elif max_guesses == 0:
                 client_socket.send(f"You lost, the word was {chosen_word}\n".encode())
                 break
-
-        client_socket.send(f"The word is {chosen_word}, you have {max_guesses} Guess left\n".encode())
     except:
         pass
     client_socket.close()
