@@ -2,19 +2,16 @@
 import random
 import threading
 
-word_list = ["glasses", "elephant", "programming", "hangman", "bottle"]
-
-chosen_word = random.choice(word_list)
-
-guessed_word = ["-" for _ in chosen_word]
-
-max_guesses = 10
-
 lock = threading.Lock()
+word_list = ["glasses", "elephant", "programming", "hangman", "bottle"]
+chosen_word = random.choice(word_list)
+guessed_word = []
+max_guesses = 10
 def handle_client(client_socket):
     global max_guesses
     global chosen_word
     global guessed_word
+    guessed_word = ["-" for _ in chosen_word]
     try:
         while max_guesses > 0:
             if type(chosen_word) == str:
@@ -42,5 +39,4 @@ def handle_client(client_socket):
         client_socket.send(f"The word is {chosen_word}, you have {max_guesses} Guess left\n".encode())
     except:
         pass
-
     client_socket.close()

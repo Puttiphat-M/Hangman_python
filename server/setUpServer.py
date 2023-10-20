@@ -13,7 +13,7 @@ def setup_server(port):
         server_socket.bind((host, port))
 
         # Start listening for incoming client connections
-        server_socket.listen(5)  # Allow up to 5 clients to queue for connection
+        server_socket.listen(1) # Only accept 1 connection at a time
 
         print("Waiting for client connection")
         while True:
