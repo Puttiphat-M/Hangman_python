@@ -37,3 +37,4 @@ def play_game(client_socket):
     
 def handle_client(client_socket):
     play_game(client_socket)
+
